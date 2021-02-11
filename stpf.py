@@ -74,3 +74,24 @@ def produce_tour_progression_sankey(fn):
     fig = go.Figure(data)
     
     return fig
+
+
+def produce_tour_progression_parcat(fn):
+    df = pd.read_excel(fn, sheet_name='RawStr')
+    fig = go.Figure(go.Parcats(
+        dimensions=[
+            {'label': '2015',
+             'values': df['2015'].to_list()},
+            {'label': '2016',
+             'values': df['2016'].to_list()},
+            {'label': '2017',
+             'values': df['2017'].to_list()},
+            {'label': '2018',
+             'values': df['2018'].to_list()},
+            {'label': '2019',
+             'values': df['2019'].to_list()},
+            {'label': '2020',
+             'values': df['2020'].to_list()}]
+    ))
+    
+    return fig
